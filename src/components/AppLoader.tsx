@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Bitcoin } from 'lucide-react';
 
-
 interface AppLoaderProps {
     onLoadingComplete: () => void;
   }
@@ -18,7 +17,7 @@ interface AppLoaderProps {
             onLoadingComplete();
             return 100;
           }
-          return prevProgress + (100 / 60); // Increase by ~1.67% every 33ms to reach 100% in 2 seconds
+          return prevProgress + (100 / 90); 
         });
       }, 33); 
   

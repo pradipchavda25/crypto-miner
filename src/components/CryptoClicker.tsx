@@ -38,7 +38,7 @@ export default function CryptoClicker() {
       setHighScore(clickCount)
       // Mine Bitcoin based on click count
       for (let i = 0; i < clickCount; i++) {
-        dispatch({ type: 'MINE' })
+        dispatch({ type: 'MINE', payload: clickCount })
       }
       confetti({
         particleCount: 60,

@@ -39,7 +39,7 @@ export default function Header() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="p-1 ">
-            <Avatar className="h-8 w-8 border-2 bg-black border-neutral-800">
+            <Avatar className="h-10 w-10 border-2 bg-black border-neutral-800">
               <AvatarImage className='bg-neutral-900' src={user?.photo_url} />
               <AvatarFallback className='bg-neutral-900 font-semibold'>{user?.first_name ? user.first_name[0] : 'A'}</AvatarFallback>
             </Avatar>

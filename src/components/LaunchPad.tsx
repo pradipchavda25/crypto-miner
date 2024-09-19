@@ -30,6 +30,7 @@ import MarketTrends from "./MarketTrends"
 import CryptoClicker from "./CryptoClicker"
 import { GameProvider, useGameContext } from "./GameContext"
 import AppLoader from "./AppLoader"
+import GamesSection from "./games/MainGameSection"
 
 function CryptoMinerApp() {
   const { state, dispatch } = useGameContext()
@@ -44,15 +45,6 @@ function CryptoMinerApp() {
     }, 1000)
     return () => clearInterval(timer)
   }, [dispatch])
-
-  const mine = () => {
-    dispatch({ type: "MINE" })
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    })
-  }
 
   if (isLoading) {
     return <AppLoader onLoadingComplete={() => setIsLoading(false)} />;
@@ -75,7 +67,7 @@ function CryptoMinerApp() {
               <TabsContent value="home" className="h-full">
                 <ScrollArea className="h-full p-4">
                   <MiningStation />
-                  <CryptoClicker />
+                  <GamesSection />
                   <MarketTrends />
                 </ScrollArea>
               </TabsContent>

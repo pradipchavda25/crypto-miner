@@ -33,7 +33,7 @@ export default function MiningStation() {
   }, [dispatch])
 
   const handleMine = () => {
-    dispatch({ type: 'MINE' })
+    dispatch({ type: 'MINE', payload: 0 })
     setMiningProgress((prev) => (prev + 20) % 100)
     controls.start({
       scale: [1, 1.2, 1],
@@ -92,15 +92,6 @@ export default function MiningStation() {
                   >
                     <Bitcoin className="w-16 h-16 sm:w-20 sm:h-20 text-white" />
                   </motion.div>
-                  {isHovering && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="absolute inset-0 bg-black/50 flex items-center justify-center"
-                    >
-                      <Zap className="w-12 h-12 sm:w-16 sm:h-16 text-yellow-400" />
-                    </motion.div>
-                  )}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

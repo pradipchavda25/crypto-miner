@@ -184,7 +184,7 @@ type State = {
 }
 
 type Action =
-  | { type: 'MINE' }
+  | { type: 'MINE'; payload: number }
   | { type: 'MINE_PASSIVE'; payload: number }
   | { type: 'UPGRADE'; payload: number }
   | { type: 'UNLOCK_ACHIEVEMENT'; payload: string }

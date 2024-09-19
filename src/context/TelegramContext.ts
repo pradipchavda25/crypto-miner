@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// Define types for Telegram WebApp and User
 interface TelegramWebApp {
     initDataUnsafe?: {
         user?: TelegramUser;
@@ -20,7 +19,6 @@ interface TelegramUser {
     language_code?: string;
 }
 
-// Extend the Window interface to include Telegram
 declare global {
     interface Window {
         Telegram?: {
@@ -40,7 +38,6 @@ const useTelegram = () => {
             setWebApp(tg);
             setUser(tg.initDataUnsafe?.user || null);
             
-            // Get the start parameter from URL
             const urlParams = new URLSearchParams(window.location.search);
             const param = urlParams.get('tgWebAppStartParam');
             setStartParam(param);
@@ -49,7 +46,6 @@ const useTelegram = () => {
             tg.setBackgroundColor('#101010');
             tg.expand();
 
-            // Ensure the web app is ready
             tg.ready();
         } else {
             console.log("Telegram WebApp object not found");

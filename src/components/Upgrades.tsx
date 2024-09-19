@@ -99,23 +99,6 @@ export default function Upgrades() {
           </motion.div>
         ))}
       </div>
-      <AnimatePresence>
-        {hoveredUpgrade !== null && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="fixed bottom-4 right-4 bg-neutral-900 p-4 rounded-lg shadow-lg"
-          >
-            <p className="text-yellow-500 font-bold">
-              {UPGRADE_TYPES[hoveredUpgrade].name} Stats
-            </p>
-            <p className="text-sm">
-              Next Level Boost: x{UPGRADE_TYPES[hoveredUpgrade].baseMultiplier * Math.pow(2, state.upgradeLevels[hoveredUpgrade] + 1)}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }
