@@ -1,6 +1,6 @@
 "use client";
-import Launchpad from "@/components/LaunchPad";
+import CryptoMiner from "@/components/Main";
 
 export default function Home() {
-  return <Launchpad />;
+  return <CryptoMiner />;
 }

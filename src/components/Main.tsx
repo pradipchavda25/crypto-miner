@@ -1,50 +1,36 @@
-import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  Bitcoin,
-  Cpu,
   Zap,
-  Trophy,
-  Store,
-  Settings,
-  TrendingUp,
-  Home,
-  Search,
-  Percent,
-  ShoppingCart,
-  User,
-  Users,
-  GamepadIcon,
-} from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Toaster } from "@/components/ui/toaster"
-import { useToast } from "@/components/ui/use-toast"
-import confetti from "canvas-confetti"
-import Header from "./Header"
-import MiningStation from "./MiningStation"
-import Upgrades from "./Upgrades"
-import Leaderboard from "./Leaderboard"
-import Profile from "./Profile"
-import MarketTrends from "./MarketTrends"
-import CryptoClicker from "./CryptoClicker"
-import { GameProvider, useGameContext } from "./GameContext"
-import AppLoader from "./AppLoader"
-import GamesSection from "./games/MainGameSection"
+  Trophy, TrendingUp,
+  Home, User
+} from "lucide-react";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
+import Header from "./Header";
+import MiningStation from "./MiningStation";
+import Upgrades from "./Upgrades";
+import Leaderboard from "./Leaderboard";
+import Profile from "./Profile";
+import MarketTrends from "./MarketTrends";
+import { GameProvider, useGameContext } from "./GameContext";
+import AppLoader from "./AppLoader";
+import GamesSection from "./games/MainGameSection";
 
 function CryptoMinerApp() {
-  const { state, dispatch } = useGameContext()
-  const [activeTab, setActiveTab] = useState("home")
-  const [isLoading, setIsLoading] = useState(true)
-  const { toast } = useToast()
-
+  const { state, dispatch } = useGameContext();
+  const [activeTab, setActiveTab] = useState("home");
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
 
   useEffect(() => {
     const timer = setInterval(() => {
-      dispatch({ type: "MINE_PASSIVE", payload: 1 })
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [dispatch])
+      dispatch({ type: "MINE_PASSIVE", payload: 1 });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [dispatch]);
 
   if (isLoading) {
     return <AppLoader onLoadingComplete={() => setIsLoading(false)} />;
@@ -99,7 +85,7 @@ function CryptoMinerApp() {
       <AnimatedNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
       <Toaster />
     </div>
-  )
+  );
 }
 
 function BackgroundGraphicsGrid() {
@@ -112,25 +98,40 @@ function BackgroundGraphicsGrid() {
         height="100%"
       >
         <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4a4a4a" strokeWidth="0.5" />
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="#4a4a4a"
+              strokeWidth="0.5"
+            />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
     </div>
-  )
+  );
 }
 
-
-function AnimatedNavBar({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) {
+function AnimatedNavBar({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}) {
   const tabs = [
     { value: "home", icon: Home, label: "Home" },
     { value: "upgrades", icon: Zap, label: "Upgrades" },
     { value: "market", icon: TrendingUp, label: "Market" },
     { value: "leaderboard", icon: Trophy, label: "Leaderboard" },
     { value: "profile", icon: User, label: "Profile" },
-  ]
+  ];
 
   return (
     <motion.footer
@@ -144,7 +145,9 @@ function AnimatedNavBar({ activeTab, setActiveTab }: { activeTab: string, setAct
           <motion.button
             key={tab.value}
             className={`flex items-center space-x-2 p-3 ${
-              activeTab === tab.value ? "bg-yellow-500 text-neutral-900 rounded-full" : ""
+              activeTab === tab.value
+                ? "bg-yellow-500 text-neutral-900 rounded-full"
+                : ""
             }`}
             onClick={() => setActiveTab(tab.value)}
             whileHover={{ scale: 1.05 }}
@@ -159,7 +162,7 @@ function AnimatedNavBar({ activeTab, setActiveTab }: { activeTab: string, setAct
         ))}
       </div>
     </motion.footer>
-  )
+  );
 }
 
 export default function CryptoMiner() {
@@ -167,5 +170,5 @@ export default function CryptoMiner() {
     <GameProvider>
       <CryptoMinerApp />
     </GameProvider>
-  )
+  );
 }
