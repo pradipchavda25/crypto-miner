@@ -62,9 +62,9 @@ export default function Profile() {
     <div className="space-y-4 p-0">
       <Card className="bg-neutral-900 border-neutral-700">
         <CardHeader className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <Avatar className="w-24 h-24 sm:w-32 sm:h-32">
-            <AvatarImage src="/placeholder-avatar.jpg" />
-            <AvatarFallback>{user?.first_name ? user.first_name[0] : 'A'}</AvatarFallback>
+          <Avatar className="w-24 h-24 bg-transparent  sm:w-32 sm:h-32">
+            <AvatarImage className='bg-transparent' src="/placeholder-avatar.jpg" />
+            <AvatarFallback className='bg-transparent border text-3xl font-bold border-neutral-700'>{user?.first_name ? user.first_name[0] : 'A'}</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left">
             <CardTitle className="text-2xl sm:text-3xl mb-2"> {user ? `${user.first_name} ${user.last_name || ''}` : "Anonymous"}</CardTitle>
