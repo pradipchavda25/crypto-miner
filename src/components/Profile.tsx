@@ -64,10 +64,10 @@ export default function Profile() {
         <CardHeader className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
           <Avatar className="w-24 h-24 sm:w-32 sm:h-32">
             <AvatarImage src="/placeholder-avatar.jpg" />
-            <AvatarFallback>CM</AvatarFallback>
+            <AvatarFallback>{user?.first_name ? user.first_name[0] : 'A'}</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left">
-            <CardTitle className="text-2xl sm:text-3xl mb-2">CryptoMiner2023</CardTitle>
+            <CardTitle className="text-2xl sm:text-3xl mb-2"> {user ? `${user.first_name} ${user.last_name || ''}` : "Anonymous"}</CardTitle>
             <p className="text-sm text-neutral-400">Joined 30 days ago</p>
             <div className="mt-2">
               <Badge variant="secondary" className="mr-2">Level {state.level}</Badge>
